@@ -40,6 +40,7 @@ int turn=0;
             @Override
             public void onClick(View v) {
                 recreate();
+                Toast.makeText(MainActivity.this, "Grid reset.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -158,6 +159,7 @@ int turn=0;
                             nameset[0] = String.valueOf(Input1.getText());
                             nameset[1] = String.valueOf(Input2.getText());
                             nameconfig();
+                            Toast.makeText(MainActivity.this, "Player names changed. See scoreboard for details.", Toast.LENGTH_LONG).show();
                         }
                     }
                 })
@@ -262,6 +264,7 @@ int turn=0;
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         recreater();
+                        Toast.makeText(MainActivity.this, "Scores reset.", Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
