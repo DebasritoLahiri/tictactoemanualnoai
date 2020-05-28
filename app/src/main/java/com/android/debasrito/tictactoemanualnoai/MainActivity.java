@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -145,12 +146,19 @@ int turn=0;
         alertDialogBuilder.setView(promptsView);
         final EditText Input1 = promptsView.findViewById(R.id.player1);
         final EditText Input2 = promptsView.findViewById(R.id.player2);
+        Input1.setHint("John");
+        Input2.setHint("Doe");
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        nameset[0] = String.valueOf(Input1.getText());
-                        nameset[1] = String.valueOf(Input2.getText());
-                        nameconfig();
+                        if (TextUtils.isEmpty(Input1.getText()) || TextUtils.isEmpty(Input2.getText())) {
+                            Toast.makeText(MainActivity.this, "Names cannot be empty.", Toast.LENGTH_LONG).show();
+                            nameset();
+                        } else {
+                            nameset[0] = String.valueOf(Input1.getText());
+                            nameset[1] = String.valueOf(Input2.getText());
+                            nameconfig();
+                        }
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
